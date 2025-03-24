@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [✓] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [✓] Commit: `Create Notification service struct skeleton.`
+    -   [✓] Commit: `Implement subscribe function in Notification service.`
+    -   [✓] Commit: `Implement subscribe function in Notification controller.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification service.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [✓] Commit: `Implement receive_notification function in Notification service.`
+    -   [✓] Commit: `Implement receive function in Notification controller.`
+    -   [✓] Commit: `Implement list_messages function in Notification service.`
+    -   [✓] Commit: `Implement list function in Notification controller.`
+    -   [✓] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -91,3 +91,9 @@ This is the place for you to write reflections:
     Rust tidak mengizinkan variabel `static` _mutable_ untuk menjaga _thread safety_ saat _multithreading_. Pada Java, variabel `static` dapat diubah oleh beberapa _thread_ sekaligus tanpa adanya mekanisme pengaman yang bisa menyebabkan _race condition_. Rust mencegah hal tersebut pada level _compile-time_, sehingga semua mutasi variabel `static` harus dilakukan melalui mekanisme _thread-safe_, contohnya `lazy_static` yang membuat suatu variabel menjadi Singleton, berarti hanya ada satu dalam program tersebut.
 
 #### Reflection Subscriber-2
+1. **Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.**<br><br>
+    Ya, setelah mengecek `lib.rs`, banyak informasi yang saya terima, seperti Error Response dan _root_ URL. Setelah saya mencari lebih mendalam pada sumber lain, `dotenvy` digunakan untuk membaca variabel lingkungan dan dari file `.env` dan `Figment` untuk menggabungkan konfigurasi _default_ dengan variabel lingkungan untuk menciptakan konfigurasi yang dinamis. Selain itu, fungsi `compose_error_response` ada untuk mengemas informasi _error_ secara konsisten.<br><br>
+2. **Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?**<br><br>
+    Observer Pattern yang sudah diaplikasikan sekarang membuat proses penambahan _subscriber_ menjadi lebih mudah karena program dapat menerapkan _Open-Closed Principle_ dengan menggunakan `trait` jika `Subscriber` sebagai _observer_ memiliki jenis atau perilaku yang berbeda-beda. Jika nantinya dibuat lebih dari satu _instance_ Main app untuk dijalankan, masing-masing _instance_ akan memiliki mekanisme notifikasi sendiri yang mengirimkan _event_ kepada _subscriber_ asal _subscriber_ sudah terdaftar. <br><br>
+3. **Have you tried to make your own Tests, or enhance documentation on your `Postman collection`? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).**,<br><br>
+    Ya, karena dengan `Postman`, pengujian program menjadi lebih mudah dan ringan. Dengan membuat _unit tests_ khusus untuk masing-masing komponen, saya bisa memverifikasi bahwa setiap fungsi dapat berjalan sesuai harapan. Selain itu, saya juga dapat menguji program yang dibuat anggota lain, sehingga dapat mendukung kinerja tugas kelompok nantinya.
